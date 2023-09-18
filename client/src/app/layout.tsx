@@ -1,5 +1,6 @@
 // GLOBAL CSS (tailwind)
 import './globals.css';
+import ThemeRegistry from '../theme/ThemeRegistry';
 
 // Fonts
 import { Inter } from 'next/font/google';
@@ -22,10 +23,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>
-        <Navbar />
-        {children}
-      </body>
+      <ThemeRegistry>
+        <body className={inter.className}>
+          <Navbar />
+          {children}
+        </body>
+      </ThemeRegistry>
     </html>
   );
 }

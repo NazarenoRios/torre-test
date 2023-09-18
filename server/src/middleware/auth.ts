@@ -5,6 +5,8 @@ import { userRequest } from "../interfaces/user.interface";
 const validateUser = (req: userRequest, res: Response, next: NextFunction) => {
   const token = req.headers.authorization?.split(" ")[1];
 
+  if (!token) return res.sendStatus(401);
+
   if (token) {
     const payload = validateToken(token);
 

@@ -4,8 +4,8 @@ import {
   login,
   logout,
   validation,
-  changePassword,
   addToSearchHistory,
+  getSearchHistory,
 } from "../controllers/user.controllers";
 
 import validateUser from "../middleware/auth";
@@ -20,8 +20,8 @@ router.post("/logout", logout);
 
 router.get("/me", validateUser, validation);
 
-router.put("/changePassword/:id", changePassword);
+router.post("/search/save", validateUser, addToSearchHistory);
 
-router.post("/search/save", addToSearchHistory);
+router.get("/search/history", validateUser, getSearchHistory);
 
 export default router;
